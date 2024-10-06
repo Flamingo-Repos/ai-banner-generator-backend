@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+pydantic
+fal-client
+ell-ai
