@@ -9,6 +9,11 @@ app = Flask(__name__)
 CORS(app)
 
 
+# add hello world route
+@app.route("/")
+def hello_world():
+    return "Hello, World!"
+
 @dataclass
 class AdRequest:
     product_name: str
