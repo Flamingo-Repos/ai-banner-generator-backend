@@ -5,7 +5,7 @@ import os
 # Load environment variables from .env file
 load_dotenv()
 
-def generate_image_prompt(product_name: str, theme: str, extra_input: str, promotional_offer: str) -> str:
+def generate_image_prompt(product_name: str, theme: str, promotional_offer: str) -> str:
     # Initialize OpenAI client with the API key from environment variable
     client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
