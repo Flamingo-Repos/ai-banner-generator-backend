@@ -33,7 +33,7 @@ def generate_image(
         "sync_mode": sync_mode
     }
 
-    modelName = "fal-ai/flux/dev",
+    modelName = "fal-ai/flux/dev"
     # Add optional arguments if provided
     if seed is not None:
         arguments["seed"] = seed
