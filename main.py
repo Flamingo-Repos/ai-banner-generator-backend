@@ -25,7 +25,7 @@ class AdRequest:
     seed: Optional[int] = None
     loras: Optional[List[dict]] = None
     guidance_scale: float = 3.5
-    num_images: int = 1
+    num_images: int = os.getenv("NUM_IMAGES", 1)
     enable_safety_checker: bool = True
     output_format: str = "jpeg"
 
