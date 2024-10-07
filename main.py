@@ -4,6 +4,7 @@ from typing import List, Optional
 from services.gpt_service import generate_image_prompt
 from services.fal_service import generate_image
 from flask_cors import CORS
+import os
 
 app = Flask(__name__)
 CORS(app)
