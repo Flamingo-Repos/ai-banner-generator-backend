@@ -13,7 +13,7 @@ def generate_image_prompt(product_name: str, theme: str, extra_input: str, promo
     message = f"Create an image prompt for an advertisement with the following details:\n"
     message += f"Product: {product_name}\n"
     message += f"Theme: {theme}\n"
-    message += f"Additional Information: {extra_input}\n"
+    # message += f"Additional Information: {extra_input}\n"
     message += f"Promotional Offer: {promotional_offer}\n"
 
     # Call GPT-4 to generate the prompt

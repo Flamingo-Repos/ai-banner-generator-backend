@@ -25,7 +25,7 @@ class AdRequest:
     seed: Optional[int] = None
     loras: Optional[List[dict]] = None
     guidance_scale: float = 3.5
-    num_images: int = 1
+    num_images: int = 4
     enable_safety_checker: bool = True
     output_format: str = "jpeg"
 
@@ -38,7 +38,7 @@ def generate_ad():
     prompt = generate_image_prompt(
         ad_request.product_name,
         ad_request.theme,
-        ad_request.extra_input,
+        # ad_request.extra_input,
         ad_request.promotional_offer
     )
 
