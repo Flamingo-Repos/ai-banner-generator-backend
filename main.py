@@ -58,8 +58,8 @@ async def generate_prompt_and_image(ad_request, layout_type, session):
     return {
         "layout_type": layout_type,
         "prompt": prompt,
-        "url": result.images[0].url,
-        "content_type": result.images[0].content_type,
+        "url": result['images'][0]['url'],
+        "content_type": result['images'][0]['content_type'],
     }
 
 async def async_generate_ad(data):
