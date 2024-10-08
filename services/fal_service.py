@@ -13,15 +13,15 @@ FAL_KEY = os.getenv("FAL_KEY")
 
 PRODUCT_MODELS = {
     "Coca Cola": {
-        "base_model": "fal-ai/flux-lora",
+        "base_model": "fal-ai/flux/dev",
         "loras": None
     },
     "Nike": {
-        "base_model": "fal-ai/flux-lora",
+        "base_model": "fal-ai/flux/dev",
         "loras": None
     },
     "Cadbury": {
-        "base_model": "fal-ai/flux-lora",
+        "base_model": "fal-ai/flux/dev",
         "loras": None
     },
     "MyWoodCup": {
