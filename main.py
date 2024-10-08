@@ -70,10 +70,6 @@ async def async_generate_ad(data):
         tasks = [generate_prompt_and_image(ad_request, layout_type, session) for layout_type in layout_types]
         results = await asyncio.gather(*tasks)
 
-    for result in results:
-        print(f"Result structure for {result['layout_type']}:")
-        pprint(result['image_result'])
-
     return results
 
 @app.route("/generate-ad", methods=["POST"])
