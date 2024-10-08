@@ -44,11 +44,11 @@ async def generate_prompt_and_image(ad_request, layout_type, session):
 
     result = await generate_image(
         session,
+        product_name=ad_request.product_name,
         prompt=prompt,
         image_size=ad_request.image_size,
         num_inference_steps=ad_request.num_inference_steps,
         seed=ad_request.seed,
-        loras=ad_request.loras,
         guidance_scale=ad_request.guidance_scale,
         num_images=1,
         enable_safety_checker=ad_request.enable_safety_checker,
