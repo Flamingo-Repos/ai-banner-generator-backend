@@ -7,3 +7,4 @@ fal-client
 flask
 Flask-CORS
 aiohttp
+pillow
