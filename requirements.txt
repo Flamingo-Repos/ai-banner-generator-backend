@@ -8,3 +8,4 @@ flask
 Flask-CORS
 aiohttp
 pillow
+cairosvg
