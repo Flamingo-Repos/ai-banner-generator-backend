@@ -70,7 +70,7 @@ async def generate_image(
     }
 
     product_config = PRODUCT_MODELS.get(product_name, {
-        "base_model": "fal-ai/flux-lora",
+        "base_model": "fal-ai/flux/dev",
         "loras": None
     })
 
@@ -105,7 +105,7 @@ async def generate_image(
                 # Extract the base64 part from the data URI
                 base64_data = image_data.split(',', 1)[1]
                 result['images'][0]['content'] = base64_data
-            elif 'content' not in result['images'][0]:
+            else:
                 return {"error": f"FAL API response does not contain valid image data. Full response: {result}"}
 
             return result

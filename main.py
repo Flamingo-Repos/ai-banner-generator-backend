@@ -4,17 +4,11 @@ from typing import List, Optional, Literal
 from services.gpt_service import generate_image_prompt
 from services.gpt_background_service import generate_background_prompt
 from services.fal_service import generate_image
+from services.overlay_service import overlay_images
 from flask_cors import CORS
-import os
-from pprint import pprint
 import asyncio
 import aiohttp
-from services.text_generation_service import generate_text_overlay
-import json
-from PIL import Image
-import io
-import base64
-import time
+from services.text_svg_generation_service import generate_text_svg_code
 
 app = Flask(__name__)
 CORS(app)
@@ -41,6 +35,8 @@ class AdRequest:
     flow_type: Literal["product_marketing", "banner_creation"] = "product_marketing"
     banner_types: List[str] = field(default_factory=lambda: ['default'])
     text_overlay: str = "summer sale bonanza 50% off"  # Default text for testing
+    text_overlay_position: Optional[str] = None
+
 
 async def generate_product_marketing(ad_request, layout_type, session):
     prompt = await generate_image_prompt(
@@ -75,7 +71,7 @@ async def generate_product_marketing(ad_request, layout_type, session):
 async def generate_banner(session, ad_request, product_name, banner_type):
     try:
         # Generate background prompt
-        background_prompt = await generate_background_prompt(session, ad_request.theme)
+        background_prompt: str = await generate_background_prompt(session, ad_request.theme)
         print(f"Generated background prompt: {background_prompt}")
 
         # Generate background image
@@ -101,62 +97,29 @@ async def generate_banner(session, ad_request, product_name, banner_type):
 
         background_image_base64 = background_result['images'][0]['content']
 
+        # Generate text overlay
+        properties = await generate_text_svg_code(
+            session,
+            background_prompt,  # Us the background prompt as the image description
+            ad_request.text_overlay
+            # background_image.size
+        )
+        if ad_request.text_overlay_position:
+            properties["placement"] = ad_request.text_overlay_position
+
         try:
-            # Decode the base64 image
-            background_image_data = base64.b64decode(background_image_base64)
-            background_image = Image.open(io.BytesIO(background_image_data))
-            print(f"Background image decoded successfully. Size: {background_image.size}, Mode: {background_image.mode}")
+            # overlay text on background
+            final_banner_base64 = overlay_images(background_image_base64, properties)
         except Exception as e:
             print(f"Error decoding background image: {str(e)}")
             return {"error": f"Error decoding background image: {str(e)}"}
 
-        # Generate text overlay
-        text_overlay, text_properties = await generate_text_overlay(
-            session,
-            background_prompt,  # Use the background prompt as the image description
-            ad_request.text_overlay,
-            background_image.size
-        )
-
-        try:
-            # Create text overlay image
-            text_overlay_image = Image.open(io.BytesIO(base64.b64decode(text_overlay)))
-            print("Text overlay image created successfully")
-        except Exception as e:
-            print(f"Error creating text overlay image: {str(e)}")
-            raise
-
-        try:
-            # Overlay text on background
-            background_image.paste(text_overlay_image, (0, 0), text_overlay_image)
-            print("Text overlaid on background successfully")
-        except Exception as e:
-            print(f"Error overlaying text on background: {str(e)}")
-            raise
-
-        try:
-            # Save the combined image to a file
-            output_dir = "generated_banners"
-            os.makedirs(output_dir, exist_ok=True)
-            file_name = f"banner_{product_name}_{int(time.time())}.png"
-            file_path = os.path.join(output_dir, file_name)
-            background_image.save(file_path, format="PNG")
-            print(f"Combined image saved successfully to {file_path}")
-
-            # Also create the base64 string
-            buffered = io.BytesIO()
-            background_image.save(buffered, format="PNG")
-            combined_image_base64 = base64.b64encode(buffered.getvalue()).decode()
-        except Exception as e:
-            print(f"Error saving combined image: {str(e)}")
-            raise
-
         return {
             "prompt": background_prompt,
-            "background_image": background_image_base64,
-            "text_overlay_properties": text_properties,
-            "combined_image": combined_image_base64,
-            "saved_image_path": file_path
+            "url": final_banner_base64,
+            # "text_overlay_properties": text_properties,
+            # "combined_image": combined_image_base64,
+            # "saved_image_path": file_path
         }
 
     except Exception as e:

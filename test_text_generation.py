@@ -1,6 +1,6 @@
 import asyncio
 import aiohttp
-from services.text_generation_service import generate_text_overlay
+from services.text_svg_generation_service import generate_text_overlay
 import base64
 from PIL import Image
 import io

@@ -5,9 +5,10 @@ import aiohttp
 # Load environment variables from .env file
 load_dotenv()
 
+
 async def generate_background_prompt(
-    session: aiohttp.ClientSession,
-    theme: str
+        session: aiohttp.ClientSession,
+        theme: str
 ) -> str:
     openai_api_key = os.getenv("OPENAI_API_KEY")
 
@@ -36,15 +37,15 @@ Theme or purpose of the image: {theme}
 Create a concise prompt that incorporates the theme in a minimalist style, suitable for a marketing banner background. Remember, do not include any text elements in the prompt."""
 
     async with session.post(
-        "https://api.openai.com/v1/chat/completions",
-        headers={"Authorization": f"Bearer {openai_api_key}"},
-        json={
-            "model": "gpt-4o",
-            "messages": [
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": user_message}
-            ]
-        }
+            "https://api.openai.com/v1/chat/completions",
+            headers={"Authorization": f"Bearer {openai_api_key}"},
+            json={
+                "model": "gpt-4o",
+                "messages": [
+                    {"role": "system", "content": system_message},
+                    {"role": "user", "content": user_message}
+                ]
+            }
     ) as response:
         result = await response.json()
         print(result)
