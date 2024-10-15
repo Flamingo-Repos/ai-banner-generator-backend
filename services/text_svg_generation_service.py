@@ -22,10 +22,9 @@ async def generate_text_svg_code(session, image_description, text_content):
     Generate a production-grade SVG code for a banner ad with the Text Content: "{text_content}"
     Requirements:
     1. Choose appropriate size, color, and font for the text to ensure readability and aesthetic appeal.
-    Guidelines:
     2. The SVG should only contain the text with a transparent background.
-    3. Make sure entire text is visible and not cropped.
-    4. Use multi line text wherever it make sense. 
+    3. Please Make sure whole text is visible. It should not be cropped.
+    4. Use multi line text whenever it make sense. 
     
     
     Also, Determine the optimal placement based on the description of background image: {image_description}

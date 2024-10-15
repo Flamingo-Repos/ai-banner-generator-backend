@@ -13,6 +13,7 @@ from services.text_svg_generation_service import generate_text_svg_code
 app = Flask(__name__)
 CORS(app)
 
+
 # add hello world route
 @app.route("/")
 def hello_world():
@@ -68,7 +69,8 @@ async def generate_product_marketing(ad_request, layout_type, session):
         "content_type": result['images'][0]['content_type'],
     }
 
-async def generate_banner(session, ad_request, product_name, banner_type):
+
+async def generate_banner(session, ad_request):
     try:
         # Generate background prompt
         background_prompt: str = await generate_background_prompt(session, ad_request.theme)
@@ -100,8 +102,8 @@ async def generate_banner(session, ad_request, product_name, banner_type):
         # Generate text overlay
         properties = await generate_text_svg_code(
             session,
-            background_prompt,  # Us the background prompt as the image description
-            ad_request.text_overlay
+            background_prompt,  #Use the background prompt as the image description
+            ad_request.promotional_offer
             # background_image.size
         )
         if ad_request.text_overlay_position:
@@ -126,40 +128,39 @@ async def generate_banner(session, ad_request, product_name, banner_type):
         print(f"Error in generate_banner: {str(e)}")
         return {"error": str(e)}
 
+
 async def async_generate_ad(data):
+    ad_request = AdRequest(**data)
+
+    # Check if the flow type is for banner creation
+    if ad_request.flow_type == "banner_creation":
+        async with aiohttp.ClientSession() as session:
+            tasks = []
+            # Check if 'banner_types' exists in the data, if not, use a default value
+            banner_types = data.get('banner_types', ['default'])
+            for banner_type in banner_types:
+                tasks.append(generate_banner(session, ad_request))
+            results = await asyncio.gather(*tasks)
+            return results
+
+    # Generate product marketing images
+    layout_types = ["center", "right", "left", "stylized"]
     async with aiohttp.ClientSession() as session:
-        tasks = []
-        # Check if 'banner_types' exists in the data, if not, use a default value
-        banner_types = data.get('banner_types', ['default'])
-        for banner_type in banner_types:
-            ad_request = AdRequest(**data)
-            tasks.append(generate_banner(session, ad_request, ad_request.product_name, banner_type))
+        tasks = [generate_product_marketing(ad_request, layout_type, session) for layout_type in layout_types]
         results = await asyncio.gather(*tasks)
-    return results
+        return results
+
 
 @app.route("/generate-ad", methods=["POST"])
 def generate_ad():
     try:
         data = request.json
-        if 'text_overlay' not in data:
-            data['text_overlay'] = "summer sale bonanza 50% off"  # Default text if not provided
         results = asyncio.run(async_generate_ad(data))
         return jsonify(results)
     except Exception as e:
         print(f"Error in generate_ad: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
-@app.post("/test-text-overlay")
-async def test_text_overlay(request: Request):
-    data = await request.json()
-    text_content = data.get("text_content", "Sample Text")
-    image_description = data.get("image_description", "A blank canvas")
-    image_size = tuple(map(int, data.get("image_size", "800x600").split("x")))
-
-    async with aiohttp.ClientSession() as session:
-        text_overlay = await generate_text_overlay(session, image_description, text_content, image_size)
-
-    return {"text_overlay": text_overlay}
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000, debug=True)

@@ -84,7 +84,6 @@ def add_image(background: Image.Image, image_path: str, position: str, size: flo
     return background
 
 
-
 def create_banner(background: Image,
                   additional_images: List[Dict[str, any]]) -> Image.Image:
     """Create a banner with additional images and texts using relative positioning and sizing."""
@@ -121,7 +120,6 @@ def overlay_images(background_image_base64: str, svg_properties) -> Image.Image:
         background=background_image,
         additional_images=[
             {"path": "svg_image1.png", "position": position1, "size": 0.5},
-            # {"path": "image2.png", "position": "bottom right", "size": 0.3}
         ]
     )
 
