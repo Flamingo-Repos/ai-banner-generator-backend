@@ -6,3 +6,4 @@ fal-client=0.5.6
 flask
 Flask-CORS
 aiohttp
+pillow
