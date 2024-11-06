@@ -16,8 +16,7 @@ import io
 import base64
 import time
 from werkzeug.utils import secure_filename
-
-from background.service import generate_banner
+from background.service import generate_background
 
 app = Flask(__name__)
 CORS(app)
@@ -208,7 +207,7 @@ async def test_text_overlay(request: Request):
     return {"text_overlay": text_overlay}
 
 
-@app.route('/generate-banner', methods=['POST'])
+@app.route('/generate-background', methods=['POST'])
 def generate_banner_api():
     try:
         # Check if guidelines file is included in request
@@ -230,7 +229,7 @@ def generate_banner_api():
 
         try:
             # Generate banner using the existing function
-            generated_banners = generate_banner(
+            generated_banners = generate_background(
                 guidelines_file_path=filepath,
                 company_context=company_context,
                 event_context=event_context

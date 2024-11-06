@@ -170,7 +170,7 @@ def _format_prompt_to_paragraph(prompt: Dict[str, Any]) -> str:
         print(f"Error formatting prompt: Missing key {e}")
         return str(prompt)
 
-def generate_banner(guidelines_file_path, company_context, event_context):
+def generate_background(guidelines_file_path, company_context, event_context):
     """Generate banner images based on guidelines and context"""
     try:
         # Create assistant with modified instructions to enforce JSON structure
