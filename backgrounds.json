@@ -1,0 +1,108 @@
+{
+  "prompts": [
+    {
+      "main_premise": "Design a corporate backdrop emphasizing innovation in fashion trends through AI.",
+      "composition": {
+        "primary_negative_space": "minimalist and creative composition",
+        "element_placement": "key elements clustered at the bottom",
+        "depth_arrangement": "layered from deeper abstracts to clear foreground motifs",
+        "transitions": "sequential gradient shifts"
+      },
+      "style": {
+        "colors": {
+          "primary": "#0046FF",
+          "secondary": "#00FFFF",
+          "accent": "#D61E89",
+          "background": "#FFFFFF"
+        },
+        "texture": "glossy with subtle texture",
+        "lighting": "natural with focal highlights",
+        "mood": "futuristic and trendy"
+      },
+      "technical": {
+        "resolution": "2100x600",
+        "elements": "dynamic geometric patterns",
+        "margins": "align with grid-based spacing",
+        "grid": "6-column flexible grid"
+      }
+    },
+    {
+      "main_premise": "Create an abstract background reflecting AI's impact on fashion forecasting.",
+      "composition": {
+        "primary_negative_space": "with clear space in the right",
+        "element_placement": "curving lines central",
+        "depth_arrangement": "elements emerge from the background",
+        "transitions": "fluid gradient transitions"
+      },
+      "style": {
+        "colors": {
+          "primary": "#0046FF",
+          "secondary": "#00FFFF",
+          "accent": "#D61E89",
+          "background": "#FFFFFF"
+        },
+        "texture": "smooth with digital weave pattern",
+        "lighting": "soft ambient highlights",
+        "mood": "chic and analytical"
+      },
+      "technical": {
+        "resolution": "2100x600",
+        "elements": "contemporary lines and symbols",
+        "margins": "precisely 20pt all around",
+        "grid": "4-column fixed grid"
+      }
+    },
+    {
+      "main_premise": "Construct a communication-focused background for AI in fashion discovery.",
+      "composition": {
+        "primary_negative_space": "suitable for text overlay",
+        "element_placement": "strategically scattered in foreground",
+        "depth_arrangement": "visible layering of tech icons",
+        "transitions": "dynamic fading transitions"
+      },
+      "style": {
+        "colors": {
+          "primary": "#0046FF",
+          "secondary": "#00FFFF",
+          "accent": "#D61E89",
+          "background": "#FFFFFF"
+        },
+        "texture": "textured like silk",
+        "lighting": "highlighted with spotlights",
+        "mood": "innovative and elegant"
+      },
+      "technical": {
+        "resolution": "2100x600",
+        "elements": "network lines with intersecting nodes",
+        "margins": "balanced margins for aesthetic centering",
+        "grid": "8-column flexible layout"
+      }
+    },
+    {
+      "main_premise": "Develop a presentation background integrating latest AI technologies in fashion.",
+      "composition": {
+        "primary_negative_space": "with ample negative space at the top",
+        "element_placement": "futuristic technology icons scattered",
+        "depth_arrangement": "abstract elements in multi-layers",
+        "transitions": "smooth layering with shadow reliefs"
+      },
+      "style": {
+        "colors": {
+          "primary": "#0046FF",
+          "secondary": "#00FFFF",
+          "accent": "#D61E89",
+          "background": "#FFFFFF"
+        },
+        "texture": "woven digital fabric",
+        "lighting": "warm undertones with direct highlights",
+        "mood": "visionary and inspired"
+      },
+      "technical": {
+        "resolution": "2100x600",
+        "elements": "digital weavings with gradients and depth",
+        "margins": "aligned with grid for coherence",
+        "grid": "5-column varied grid"
+      }
+    }
+  ]
+}

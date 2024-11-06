@@ -1,0 +1,92 @@
+{
+  "prompts": [
+    {
+      "content": {
+        "headline": "Revolutionize Your Wardrobe",
+        "subheading": "AI-driven insights for unprecedented style",
+        "cta": "Discover Now"
+      },
+      "typography": {
+        "primary": "Epilogue Bold 60pt",
+        "secondary": "Epilogue Regular 38pt",
+        "cta": "Epilogue Semibold 22pt"
+      },
+      "colors": {
+        "primary_text": "#0046FF",
+        "secondary_text": "#00FFFF",
+        "cta_text": "#D61E89"
+      },
+      "layout": {
+        "headline_position": "bottom right",
+        "subheading_position": "bottom left",
+        "cta_position": "center bottom"
+      }
+    },
+    {
+      "content": {
+        "headline": "The Future of Fashion",
+        "subheading": "Unlock potential with AI's precision",
+        "cta": "Explore Trends"
+      },
+      "typography": {
+        "primary": "Epilogue Bold 68pt",
+        "secondary": "Epilogue Regular 40pt",
+        "cta": "Epilogue Semibold 22pt"
+      },
+      "colors": {
+        "primary_text": "#0046FF",
+        "secondary_text": "#00FFFF",
+        "cta_text": "#D61E89"
+      },
+      "layout": {
+        "headline_position": "top left",
+        "subheading_position": "top right",
+        "cta_position": "bottom right"
+      }
+    },
+    {
+      "content": {
+        "headline": "Predict. Inspire. Wear.",
+        "subheading": "Seamstress of the digital future",
+        "cta": "Join the Movement"
+      },
+      "typography": {
+        "primary": "Epilogue Bold 70pt",
+        "secondary": "Epilogue Regular 42pt",
+        "cta": "Epilogue Semibold 24pt"
+      },
+      "colors": {
+        "primary_text": "#0046FF",
+        "secondary_text": "#00FFFF",
+        "cta_text": "#D61E89"
+      },
+      "layout": {
+        "headline_position": "middle left",
+        "subheading_position": "middle right",
+        "cta_position": "middle center"
+      }
+    },
+    {
+      "content": {
+        "headline": "Innovate Fast Fashion",
+        "subheading": "AI integrations transforming industry patterns",
+        "cta": "See the Change"
+      },
+      "typography": {
+        "primary": "Epilogue Bold 65pt",
+        "secondary": "Epilogue Regular 38pt",
+        "cta": "Epilogue Semibold 21pt"
+      },
+      "colors": {
+        "primary_text": "#0046FF",
+        "secondary_text": "#00FFFF",
+        "cta_text": "#D61E89"
+      },
+      "layout": {
+        "headline_position": "center top",
+        "subheading_position": "center bottom",
+        "cta_position": "bottom center"
+      }
+    }
+  ]
+}
